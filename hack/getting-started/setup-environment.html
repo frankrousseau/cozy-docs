@@ -1,0 +1,37 @@
+<!DOCTYPE html><!--[if lte IE 7]> <html class="no-js ie67 ie678" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js ie8 ie678" lang="en"> <![endif]-->
+<!--[if IE 9]> <html class="no-js ie9" lang="en"> <![endif]--><html lang="en"><head><meta charset="utf-8"><!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width"><title>Setup the environment</title><link  rel="stylesheet" href="/vendors/css/knacss.css" /><link  rel="stylesheet" href="/vendors/css/sunburst.css" /><link  rel="stylesheet" href="/assets/css/main.css" /></head><body><header id="header" role="header" class="line"><div class="mod wrapper"><div class="line"><div class="mod left"><a href="/"><img src="/assets/images/happycloud.png"></a></div><h1 class="left pam"><span class="title">Cozy&nbsp;</span>a personal cloud you can&nbsp;<a href="/host/" class="menu-button">host</a>&nbsp;<a href="/use/" class="menu-button">use</a>&nbsp;and&nbsp;<a href="/hack/" class="menu-button selected">hack</a></h1></div><div class="line"><div class="subtitle">Documentation</div></div></div></header><div class="wrapper"><aside class="mod left w25 aside"><nav id="navigation" role="navigation"><ul class="first-level"><li class="big selected"><a href="/hack/getting-started/" class="label">Getting started</a><ul class="second-level"><li class="small"><a href="/hack/getting-started/setup-environment.html" class="label selected">Setup the environment</a></li><li class="small"><a href="/hack/getting-started/first-app.html" class="label">Your first app in 30 minutes</a></li><li class="small"><a href="/hack/getting-started/architecture-overview.html" class="label">Architecture Overview</a></li></ul></li><li class="big"><a href="/hack/going-further/" class="label">Going further</a></li><li class="big"><a href="/hack/cookbook/" class="label">Cozy Cookbook</a></li><li class="big"><a href="/hack/application-skeletons/" class="label">Application skeletons</a></li></ul></nav><div id="social"><ul><li><a href="https://github.com/mycozycloud/">Github</a>&nbsp;-&nbsp;<a href="https://cozycloud.cc/">Cozycloud</a></li><li>irc.freenode.org on #cozycloud</li></ul></div></aside><div id="main" role="main" class="mod pam"><h1>Setup the environment</h1>
+<p>Welcome to the first step to get you started: the development environment setup process.</p>
+<p>Since Cozy is built on many software bricks, we wrapped it into an easy to use virtual machine so you don&#39;t pollute your local system. That also means you can use the operation system you like!</p>
+<h2>Installaling dependencies</h2>
+<p>Before doing anything, install the fowlling:</p>
+<h3><a href="http://blog.nodejs.org/2013/02/15/node-v0-8-20-stable/">Node.js (v0.8.20)</a></h3>
+<p>Node.js powers awesome tools that we use to develop apps. We also wrote a tool to manage the virtual machine more easily.</p>
+<h3><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox (&gt;= v4.2.16)</a></h3>
+<p>Virtual Box allows you to run virtual machine on your computer. We use it indirectly with Vagrant to power our virtual machine.</p>
+<h3><a href="http://downloads.vagrantup.com/">Vagrant (&gt;= v1.2.7)</a></h3>
+<p>Vagrant is a tool to &quot;create and configure lightweight, reproducible and portable development environments.&quot; That&#39;s what we need here! We use it through a custom CLI tool so you will not manipulate it directly.</p>
+<h3><a href="http://git-scm.com/book/en/Getting-Started-Installing-Git">Git</a></h3>
+<p>Git is a control version tool that is now very common. We use it in combination with <a href="https://github.com">Github</a> that allows you to store online your repository and much more!</p>
+<p>You will also need our tool:</p>
+<pre class="highlighted"><code class="bash">npm install -g cozy</code></pre>
+<p>The <code>cozy</code> tool will help you managing the virtual machine and application skeletons!</p>
+<h2>Initializing and starting the virtual machine</h2>
+<p>The next step is to get your virtual machine. Basically, we you are going to have a linux running on your computer with all a Cozy needs to work on already installed and configured.</p>
+<p>To help you managing the VM, the Cozy Manager comes to the rescue.
+Create a folder that will contains all your source code:</p>
+<pre class="highlighted"><code class="bash">mkdir cozy-dev &amp;&amp; cd cozy-dev</code></pre>
+<p>Now you can use the Cozy Manager to initialize the VM by running:</p>
+<pre class="highlighted"><code class="bash">cozy dev:init</code></pre>
+<p>This will download the base box file (~500MB) and a custom configuration (<a href="https://github.com/mycozycloud/cozy-setup/blob/master/dev/Vagrantfile">see it on Github</a>). Then the VM will be created. The whole process will take you about 15 minutes (depending on your internet connection and your computer).</p>
+<p>Then you can start the VM and check that everything is running correctly.</p>
+<pre class="highlighted"><code class="bash">cozy dev:start
+cozy dev:vm-status</code></pre>
+<p>We advise you to update the VM the first time you start it (and regularly) because we don&#39;t update the base box each time we improve or fix a bug in the &quot;core&quot; of Cozy:</p>
+<pre class="highlighted"><code class="bash">cozy dev:light-update</code></pre>
+<p>You can go to <code>http://localhost:9104/</code> see your Cozy running. You can also use it but beware! The Cozy running in your virtual machine is in development mode, meaning that most of the security measures are disabled. Only use it for testing purpose!</p>
+<p>We explain in details how the Cozy Manager works in another section.</p>
+<p>You are now ready to write your first application, We hope it wasn&#39;t too long!</p>
+</div></div><footer id="footer" role="contentinfo" class="line pam row"><div class="col w33"><h4>Host</h4><ul><li>Installing your own Cozy</li><li>Updating your cozy</li><li>Geting rid of Cozy</li></ul></div><div class="col w33"><h4>Use</h4><ul><li>Getting started</li><li>User Guides</li><li>Troubleshooting</li></ul></div><div class="col w33"><h4>Hack</h4><ul><li>Getting started</li><li>Going further</li><li>Cookbooks</li><li>Application skeletons</li></ul></div></footer><script defer="defer"  src="/vendors/javascripts/jquery-2.0.3.min.js"></script><script defer="defer"  src="/assets/javascripts/main.js"></script></body></html>
